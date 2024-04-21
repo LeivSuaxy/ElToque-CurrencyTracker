@@ -1,0 +1,22 @@
+{
+  "config":
+  {
+    "token": "",
+    "hour": 20
+  },
+  "data":
+  {
+    "user": "",
+    "password": "",
+    "host": "",
+    "database": "",
+    "table": ""
+  },
+  "rows":
+  {
+    "id": "",
+    "name": "",
+    "value": "",
+    "date": ""
+  }
+}
