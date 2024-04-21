@@ -7,7 +7,7 @@ import time
 from ImageGenerator import generator
 
 
-def execute_proccess(config: dict):
+def execute_proccess(config: dict) -> None:
     date1: datetime = datetime.datetime.now()
     date = datetime.date(year=date1.year, month=date1.month, day=date1.day)
 
@@ -16,9 +16,8 @@ def execute_proccess(config: dict):
     if result == 1:
         insert_database(date, config)
         generator(config)
-        return 1
     else:
-        return 0
+        messagebox.showerror('Error', 'There was a problem executing the script')
 
 
 def execute_command(date: datetime, config: dict):
@@ -62,7 +61,7 @@ def execute_command(date: datetime, config: dict):
         return 0
 
 
-def insert_database(init_date, config: dict):
+def insert_database(init_date, config: dict) -> None:
     data = json.loads(open("data.json", "r").read())
 
     # You can use this structure to add any rate value you want to extract from the JSON and store in your database
@@ -75,10 +74,8 @@ def insert_database(init_date, config: dict):
     if data.get('tasas', {}).get('ECU') is not None:
         insert_data((data['tasas']['ECU']), 'EUR', init_date, config)
 
-    return 1
 
-
-def insert_data(var, name: str, date: datetime, config: dict):
+def insert_data(var, name: str, date: datetime, config: dict) -> None:
     cnx = mysql.connector.connect(user=(config['data']['user']), password=(config['data']['password']),
                                   host=(config['data']['host']), database=(config['data']['database']))
 

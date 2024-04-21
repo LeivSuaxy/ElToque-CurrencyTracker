@@ -3,7 +3,7 @@ import os
 import matplotlib.pyplot as plt
 
 
-def get_values(name, config: dict):
+def get_values(name, config: dict) -> list:
     cnx = mysql.connector.connect(user=(config['data']['user']), password=(config['data']['password']),
                                   host=(config['data']['host']), database=(config['data']['database']))
 
@@ -24,7 +24,7 @@ def get_values(name, config: dict):
     return value_list
 
 
-def get_date(name, config: dict):
+def get_date(name, config: dict) -> list:
     date_list: list = []
 
     cnx = mysql.connector.connect(user=(config['data']['user']), password=(config['data']['password']),
@@ -45,7 +45,7 @@ def get_date(name, config: dict):
     return date_list
 
 
-def generate_images(date_list, value_list, name):
+def generate_images(date_list, value_list, name) -> None:
     plt.figure(figsize=(20, 20))
     plt.plot(date_list, value_list, '-')
 
@@ -63,7 +63,7 @@ def generate_images(date_list, value_list, name):
     plt.savefig(os.path.join(desktop_route, f'Variation of {name} in 2024'), dpi=300)
 
 
-def generator(config: dict):
+def generator(config: dict) -> None:
     list_names = {'USD', 'MLC', 'EUR'}
 
     for name in list_names:

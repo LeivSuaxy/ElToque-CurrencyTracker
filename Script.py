@@ -6,11 +6,11 @@ import time
 from CallApi import execute_proccess
 
 
-def task():
+def task() -> None:
     execute_proccess(config)
 
 
-def alert():
+def alert() -> None:
     messagebox.showwarning("Alert",
                            "The SCRIPT tasks are executed in 15 MIN, make sure you have a good internet connection")
 

@@ -5,7 +5,7 @@ class Hour:
 
         self.__init_hours(hour, minute)
 
-    def __init_hours(self, hour: int, minute: int):
+    def __init_hours(self, hour: int, minute: int) -> None:
         if 10 > hour >= 0:
             self.hour = f"0{hour}"
         elif 10 <= hour < 25:
@@ -18,7 +18,7 @@ class Hour:
         else:
             self.minute = f"{minute}"
 
-    def increment(self):
+    def increment(self) -> None:
         integerhour: int = int(self.hour)
 
         if integerhour == 24:
