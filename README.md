@@ -10,8 +10,8 @@ ElToque is a site that records the trend of currency exchange values in Cuba wit
 
 ### How to use:
 <ul>
-    <li>You must first request access to the <a href="https://tasas.eltoque.com/docs/" target="_blank">ElToque API</a>, after receiving the token, enter it in the config.json file.</li>
-    <li>Create or connect to a database, with a table that has at least 4 columns: ID (Optional), Currency Name, Currency Value, Date. In addition to entering the respective data in the config.json</li>
+    <li>You must first request access to the <a href="https://tasas.eltoque.com/docs/" target="_blank">ElToque API</a>, after receiving the token, enter it in the <b>config.json</b> file.</li>
+    <li>Create or connect to a database, with a table that has at least 4 columns: ID (Optional), Currency Name, Currency Value, Date. In addition to entering the respective data in the <b>config.json</b></li>
     <li>Once the configurations JSON is configured, you can start the Script.py</li>
 </ul>
 
