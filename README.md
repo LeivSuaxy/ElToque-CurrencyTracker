@@ -23,21 +23,6 @@ ElToque is a site that records the trend of currency exchange values in Cuba wit
   {
     "token": "Put your token here", 
     "hour": "Here you put an integer value in the range 0-24 to specify the time the script will be executed"
-  },
-  "data":
-  {
-    "user": "Put your user here",
-    "password": "Put your password here",
-    "host": "Put the database address here",
-    "database": "Connect the database",
-    "table": "Put the table where you will insert the information"
-  },
-  "rows":
-  {
-    "id": "It is not necessary if you have AUTO_INCREMENT in your database.",
-    "name": "Column where you will specify the currency.",
-    "value": "Column where the currency value will be filed.",
-    "date": "Column where you will put the date of registration."
   }
 }
 

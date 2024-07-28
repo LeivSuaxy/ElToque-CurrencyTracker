@@ -2,7 +2,8 @@ import mysql.connector
 import os
 import matplotlib.pyplot as plt
 
-
+# Disabled for now
+# It is out of update
 def get_values(name, config: dict) -> list:
     cnx = mysql.connector.connect(user=(config['data']['user']), password=(config['data']['password']),
                                   host=(config['data']['host']), database=(config['data']['database']))

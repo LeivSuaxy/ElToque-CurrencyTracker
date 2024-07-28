@@ -3,32 +3,17 @@ from tkinter import messagebox
 from Hour import Hour
 import schedule
 import time
+from DatabaseSQLite import DB
 from CallApi import execute_proccess
 
 
 def task() -> None:
-    execute_proccess(config)
+    execute_proccess(config, database)
 
 
 def alert() -> None:
     messagebox.showwarning("Alert",
                            "The SCRIPT tasks are executed in 15 MIN, make sure you have a good internet connection")
-
-
-def check_config_database(config: dict) -> bool:
-    if config.get('data', {}).get('user') is None:
-        return False
-
-    if config.get('data', {}).get('password') is None:
-        return False
-
-    if config.get('data', {}).get('host') is None:
-        return False
-
-    if config.get('data', {}).get('database') is None:
-        return False
-
-    return True
 
 
 if __name__ == '__main__':
@@ -45,8 +30,7 @@ if __name__ == '__main__':
     else:
         workhour = Hour((config['config']['hour']), 0)
 
-    if not check_config_database(config):
-        messagebox.showerror('Error', 'Error, complete the database information')
+    database: DB = DB()
 
     schedule.every().day.at(f"{workhour.decrement()}:45").do(alert)
     schedule.every().day.at(workhour.hour + ":00").do(task)

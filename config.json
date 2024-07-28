@@ -1,22 +1,7 @@
 {
   "config":
   {
-    "token": "",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxMzIxOTkwNiwianRpIjoiNjQ0MzBkYmUtOWNiOC00MzJmLWIxZDctNjRjZWI4YjFmMDVjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjY1ZjhjMTRkNDVhZjllOGMxOWVlMjgzOCIsIm5iZiI6MTcxMzIxOTkwNiwiZXhwIjoxNzQ0NzU1OTA2fQ.flux2Vjp2QFCKsUXmo6rNWMoSMiw14LgimDdCi6p43U",
     "hour": 20
-  },
-  "data":
-  {
-    "user": "",
-    "password": "",
-    "host": "",
-    "database": "",
-    "table": ""
-  },
-  "rows":
-  {
-    "id": "",
-    "name": "",
-    "value": "",
-    "date": ""
   }
 }
