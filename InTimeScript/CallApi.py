@@ -3,8 +3,7 @@ import json
 import datetime
 from tkinter import messagebox
 import time
-from DatabaseSQLite import DB
-from ImageGenerator import generator
+from Tools.DatabaseSQLite import DB
 
 
 def execute_proccess(config: dict, database: DB) -> None:
@@ -52,7 +51,7 @@ def execute_command(date: datetime, config: dict, database: DB):
         # Convert the response to JSON
         data = response.json()
 
-        with open('data.json', 'w') as f:
+        with open('../data.json', 'w') as f:
             json.dump(data, f)
 
         print('Finished JSON')
@@ -63,7 +62,7 @@ def execute_command(date: datetime, config: dict, database: DB):
 
 
 def insert_database(init_date, database: DB) -> None:
-    data = json.loads(open("data.json", "r").read())
+    data = json.loads(open("../data.json", "r").read())
 
     database.open_connection()
 

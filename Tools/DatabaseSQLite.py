@@ -33,17 +33,12 @@ class DB:
         return False
 
     def close_connection(self):
-        if self.cursor:
-            self.cursor.close()
-        if self.connection:
-            self.connection.close()
+        self.cursor.close()
+        self.connection.close()
 
     def open_connection(self):
-        if not self.connection:
-            self.connection = sqlite3.connect(self.dbname)
-
-        if not self.cursor:
-            self.cursor = self.connection.cursor()
+        self.connection = sqlite3.connect(self.dbname)
+        self.cursor = self.connection.cursor()
 
     def insert_data(self, var, name: str, date):
         print('Insertando...')

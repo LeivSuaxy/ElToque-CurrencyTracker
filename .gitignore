@@ -1,4 +1,8 @@
 currency.db
-config.json
+InTimeScript/config.json
 data.json
 identifier.sqlite
+ExScript/config.json
+ExScript/data.json
+ExScript/currency.db
+InTimeScript/currency.db
