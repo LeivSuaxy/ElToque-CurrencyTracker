@@ -3,7 +3,6 @@ import requests
 import time
 from Tools.DatabaseSQLite import DB
 import json
-import calendar
 from tkinter import messagebox
 
 
@@ -16,22 +15,6 @@ def call_api():
         res = call_api()
 
     return res
-
-
-def increment_date():
-    # Incrementar la fecha en un día
-    next_day = date + datetime.timedelta(days=1)
-
-    # Verificar si el día es mayor que el número de días en el mes actual
-    last_day_of_month = calendar.monthrange(next_day.year, next_day.month)[1]
-    if next_day.day > last_day_of_month:
-        # Incrementar el mes
-        if next_day.month == 12:
-            next_day = datetime.date(next_day.year + 1, 1, 1)
-        else:
-            next_day = datetime.date(next_day.year, next_day.month + 1, 1)
-
-    return next_day
 
 
 def insert_database() -> None:
@@ -51,42 +34,37 @@ def insert_database() -> None:
 
 if __name__ == '__main__':
     config = json.loads(open('config.json', 'r').read())
-    date = datetime.date(2021, 1, 1)
     database: DB = DB()
     token = config['config']['token']
+    date = datetime.date.today()
 
     headers = {
         "Authorization": f"Bearer {token}"
     }
 
     url = f"https://tasas.eltoque.com/v1/trmi?date_from={date}%2000%3A00%3A01&date_to={date}%2023%3A59%3A01"
-    current_date = datetime.date.today()
-    while date <= current_date:
+
+    status_ok = False
+
+    while status_ok is False:
         database.open_connection()
         response = call_api()
 
         if response.status_code == 200:
-            print('HTTP_200_CODE OK!')
-            # Convert the response to JSON
             data = response.json()
 
             with open('data.json', 'w') as f:
                 json.dump(data, f)
 
-            print('Finished JSON')
-
             insert_database()
-            date = increment_date()
-            url = f"https://tasas.eltoque.com/v1/trmi?date_from={date}%2000%3A00%3A01&date_to={date}%2023%3A59%3A01"
             database.close_connection()
+            status_ok = True
         elif response.status_code == 429:
             print('Ups! Demasiado Rapido, Try Again...')
             database.close_connection()
         elif response.status_code == 400:
             print('HTTP_400_BAD_REQUEST')
             print('Maybe day out of data')
-            date = increment_date()
-            url = f"https://tasas.eltoque.com/v1/trmi?date_from={date}%2000%3A00%3A01&date_to={date}%2023%3A59%3A01"
             database.close_connection()
         elif response.status_code == 422:
             print('Missing token')
@@ -99,4 +77,4 @@ if __name__ == '__main__':
 
         time.sleep(2.0)
 
-    print('Finalizado')
+    print('Finalizado!')
